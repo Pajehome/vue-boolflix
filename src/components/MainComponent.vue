@@ -8,7 +8,7 @@
           titolo: {{item.title ? item.title : item.name}}<br />
           lingua: {{item.original_language}}<br />
          <country-flag :country='item.original_language' size='small'/> <br />
-          voto: {{item.vote_average}}<br />
+          voto: {{round(item.vote_average)}}<br />
           <img :src="image+item.backdrop_path" alt="">
         </li>
       </ul>
@@ -18,9 +18,8 @@
 
 <script>
 import CountryFlag from 'vue-country-flag'
-
 export default {
-    name: 'MainComponent',
+    name: 'MainComponent', 
     components:{
      CountryFlag,
     },
@@ -39,11 +38,12 @@ export default {
        
     },
     methods:{
-      
+       round(txt){
+           return Math.round(txt / 2)
+       }
     }
 }
 </script>
 
 <style lang="scss">
-
 </style>

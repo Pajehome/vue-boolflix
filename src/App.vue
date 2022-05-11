@@ -16,7 +16,6 @@
 import MainComponent from './components/MainComponent.vue'
 import SearchComponent from './components/SearchComponent.vue'
 import axios from 'axios'
-
 export default {
   name: 'App',
   components: {
@@ -32,7 +31,6 @@ export default {
       loading: false,
       loadingSeries: false,
       tmdbImage: 'https://image.tmdb.org/t/p/w500',
-
     }
   },
   methods:{
@@ -52,7 +50,6 @@ export default {
         console.log(error);
       })
     },
-
     search(text){
        const queryParams = {
         params:{

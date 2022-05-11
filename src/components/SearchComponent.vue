@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'SearchComponent',
     data(){
@@ -26,5 +25,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
