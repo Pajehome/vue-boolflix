@@ -31,7 +31,7 @@ export default {
       series:[],
       loading: false,
       loadingSeries: false,
-      tmdbImage: 'https://image.tmdb.org/t/p/',
+      tmdbImage: 'https://image.tmdb.org/t/p/w500',
 
     }
   },

@@ -9,6 +9,7 @@
           lingua: {{item.original_language}}<br />
          <country-flag :country='item.original_language' size='small'/> <br />
           voto: {{item.vote_average}}<br />
+          <img :src="image+item.backdrop_path" alt="">
         </li>
       </ul>
      
