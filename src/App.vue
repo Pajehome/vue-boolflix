@@ -30,7 +30,7 @@ export default {
       series:[],
       loading: false,
       loadingSeries: false,
-      tmdbImage: 'https://image.tmdb.org/t/p/w500',
+      tmdbImage: 'https://image.tmdb.org/t/p/w342',
     }
   },
   methods:{

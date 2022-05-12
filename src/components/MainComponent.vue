@@ -1,7 +1,10 @@
 <template>
     <section>
         <h2>{{title}}</h2>
-        <card-component v-for ='(card, index) in items'  :key="index" :item='card' :images='image'/>
+        <div class="wrapper">
+          <card-component v-for ='(card, index) in items'  :key="index" :item='card' :images='image'/>
+        </div>
+        
        <!-- <ul>
          <li v-for="(item) in items" :key="item.id">
           id: {{item.id}}<br />
@@ -50,6 +53,12 @@ export default {
 </script>
 
 <style lang="scss">
+.wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(3,100%)!important;
+  overflow:hidden !important;
+  scroll-behavior: smooth !important;
+}  
 
 .yellow{
    color: yellow;
