@@ -1,21 +1,19 @@
 <template>
   <div>
-      <ul>
+      
          <li>
-          id: {{item.id}}<br />
-          titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br />
-
-          titolo: {{item.title ? item.title : item.name}}<br />
-
-          lingua: {{item.original_language}}<br />
-
-          <country-flag :country='item.original_language' size='small'/> <br /> 
-
-          voto: {{item.vote_average}}<br />
-
-          <img :src="imagee+item.backdrop_path" alt="">
+          id: {{card.id}}<br />
+          titolo originale: {{card.original_title ? card.original_title : card.original_name}}<br />
+          titolo: {{card.title ? card.title : card.name}}<br />
+          lingua: {{card.original_language}}<br />
+         <country-flag :country='card.original_language' size='small'/> <br />
+          voto: {{rounds(card.vote_average)}}
+          <img :src="image+card.backdrop_path" alt="">
+          <span v-for="(numero, index) in 5" :key="index">
+              <i :class="numero <= rounds(card.vote_average) ? 'fa-solid fa-star yellow' : 'fa-solid fa-star'"></i>
+          </span>
         </li>
-      </ul>
+      
   </div>
 </template>
 
@@ -30,12 +28,15 @@ data(){
 
 },
 props:{
-        item: Array,
-        loaderr: Boolean,
-        titlee: String,
-        imagee: String,
+        card: Object,
+        images: String,
         
     },
+ methods:{
+   rounds(txt){
+           return   Math.round(txt / 2)   
+       }
+ }   
 }
 </script>
 

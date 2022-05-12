@@ -1,27 +1,33 @@
 <template>
     <section>
         <h2>{{title}}</h2>
-       <ul>
-        <li v-for="(item) in items" :key="item.id">
+        <card-component v-for ='(card, index) in items'  :key="index" :item='card' :images='image'/>
+       <!-- <ul>
+         <li v-for="(item) in items" :key="item.id">
           id: {{item.id}}<br />
           titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br />
           titolo: {{item.title ? item.title : item.name}}<br />
           lingua: {{item.original_language}}<br />
          <country-flag :country='item.original_language' size='small'/> <br />
-          voto: {{round(item.vote_average)}}<br />
+          voto: {{rounds(item.vote_average)}}
           <img :src="image+item.backdrop_path" alt="">
-        </li>
-      </ul>
+          <span v-for="(numero, index) in 5" :key="index">
+              <i :class="numero <= rounds(item.vote_average) ? 'fa-solid fa-star yellow' : 'fa-solid fa-star'"></i>
+          </span>
+          
+         </li> 
+      </ul>  -->
      
     </section>
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag'
+
+import CardComponent from './CardComponent.vue'
 export default {
     name: 'MainComponent', 
     components:{
-     CountryFlag,
+    CardComponent,
     },
     props:{
         items: Array,
@@ -38,12 +44,14 @@ export default {
        
     },
     methods:{
-       round(txt){
-           return Math.round(txt / 2)
-       }
-    }
+        
+       },
 }
 </script>
 
 <style lang="scss">
+
+.yellow{
+   color: yellow;
+}
 </style>
