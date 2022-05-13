@@ -2,7 +2,11 @@
     <section>
         <h2>{{title}}</h2>
         <div class="wrapper">
-          <card-component v-for ='(card, index) in items'  :key="index" :item='card' :images='image'/>
+           <section id="section">
+               <card-component v-for ='(card, index) in items'  :key="index" :item='card' :itemss='items' :images='image' :indice='index'/>
+           </section> 
+          
+          
         </div>
         
        <!-- <ul>
@@ -26,11 +30,14 @@
 
 <script>
 
-import CardComponent from './CardComponent.vue'
+import CardComponent from './CardComponent.vue';
+
+
 export default {
     name: 'MainComponent', 
     components:{
     CardComponent,
+    
     },
     props:{
         items: Array,
@@ -58,6 +65,14 @@ export default {
   grid-template-columns: repeat(3,100%)!important;
   overflow:hidden !important;
   scroll-behavior: smooth !important;
+   
+   section {
+    width: 100% !important;
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(20, auto) !important;
+    margin: 20px 0 !important;
+   }
 }  
 
 .yellow{
