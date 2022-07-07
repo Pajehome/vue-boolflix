@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <header>
-       <h1 class="display-6">Boolflix</h1>
+    <header class="d-flex justify-content-around pt-3">
+       <h1>Boolflix</h1>
        <search-component @performSearch="search" />
     </header>
-    <main>     
-      <main-component :items="movies" title="Movies" :loader="loading" :image="tmdbImage"/>
-      <main-component :items="series" title="Series" :loader="loadingSeries" :image="tmdbImage"/>
+    <main>    
+      
+     <div v-if="home">
+        <home-component/>
+      </div> 
+      
+     <div v-if="main">
+          <main-component :items="movies"  :loader="loading" :image="tmdbImage"  :title="title == true ? 'Movies'  : ''"/>
+          <main-component :items="series"  :loader="loadingSeries" :image="tmdbImage" :title="title == true ? 'Series'  : ''" />
+     </div>
+     
+
     </main>
    
   </div>
@@ -15,12 +24,15 @@
 <script>
 import MainComponent from './components/MainComponent.vue'
 import SearchComponent from './components/SearchComponent.vue'
+import HomeComponent from './components/HomeComponent.vue'
+
 import axios from 'axios'
 export default {
   name: 'App',
   components: {
     SearchComponent,
     MainComponent,
+    HomeComponent,
   },
   data(){
     return{
@@ -30,7 +42,10 @@ export default {
       series:[],
       loading: false,
       loadingSeries: false,
+      title: false,
       tmdbImage: 'https://image.tmdb.org/t/p/w342',
+      home: true,
+      main: false,
     }
   },
   methods:{
@@ -57,15 +72,30 @@ export default {
           query: text
         }
       }
+      this.home = false,
+      this.main = true,
+      this.title = true;
       this.loading = true;
       this.loadingSeries = true;
       this.getMovies(queryParams);
       this.getSeries(queryParams);
-    }
-  }
+    },
+  },
  }
 </script>
 
 <style lang="scss">
-  @import './assets/styles/general.scss' 
+  @import './assets/styles/general.scss';
+  header{
+    background-color:$header-background;
+    h1{
+       font-weight: bold;
+       text-transform: uppercase;
+       line-height: 32px;
+    }
+  }
+  main{
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 </style>

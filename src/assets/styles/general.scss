@@ -20,6 +20,7 @@ $fa-font-path           : "./webfonts" !default;
 
 body{
   font-family: $main-font;
-  background-color: $background;
-  color: $text-primary;
+  color: $boolflix-color;
+  background-color:$main-background;
+  height: 100vh;
 }

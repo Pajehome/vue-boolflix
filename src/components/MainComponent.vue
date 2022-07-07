@@ -1,30 +1,11 @@
 <template>
     <section>
-        <h2>{{title}}</h2>
-        <div class="wrapper">
-           <section id="section">
+        <h2 class="container pt-2 mb-5" >{{title}}</h2>
+        <div class="container-fluid">
+           <section class="row">
                <card-component v-for ='(card, index) in items'  :key="index" :item='card' :itemss='items' :images='image' :indice='index'/>
            </section> 
-          
-          
-        </div>
-        
-       <!-- <ul>
-         <li v-for="(item) in items" :key="item.id">
-          id: {{item.id}}<br />
-          titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br />
-          titolo: {{item.title ? item.title : item.name}}<br />
-          lingua: {{item.original_language}}<br />
-         <country-flag :country='item.original_language' size='small'/> <br />
-          voto: {{rounds(item.vote_average)}}
-          <img :src="image+item.backdrop_path" alt="">
-          <span v-for="(numero, index) in 5" :key="index">
-              <i :class="numero <= rounds(item.vote_average) ? 'fa-solid fa-star yellow' : 'fa-solid fa-star'"></i>
-          </span>
-          
-         </li> 
-      </ul>  -->
-     
+        </div> 
     </section>
 </template>
 
@@ -37,7 +18,6 @@ export default {
     name: 'MainComponent', 
     components:{
     CardComponent,
-    
     },
     props:{
         items: Array,
@@ -47,7 +27,7 @@ export default {
     },
     data(){
         return {
-            
+            value: this.value === this.items.length
         }
     },
     computed: {
@@ -60,22 +40,16 @@ export default {
 </script>
 
 <style lang="scss">
-.wrapper {
-  display: grid !important;
-  grid-template-columns: repeat(3,100%)!important;
-  overflow:hidden !important;
-  scroll-behavior: smooth !important;
-   
-   section {
-    width: 100% !important;
-    position: relative !important;
-    display: grid !important;
-    grid-template-columns: repeat(20, auto) !important;
-    margin: 20px 0 !important;
-   }
-}  
-
 .yellow{
-   color: yellow;
+   color: yellow !important;
 }
+
+.row{
+    justify-content: center;
+    gap: 3rem;
+    height: 100%;
+    position: relative;
+    padding: 10px;
+}
+
 </style>
